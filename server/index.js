@@ -5,24 +5,33 @@ const cors = require("cors");
 const connection = require("./db");
 const router=require("./Routes/user")
 const mongoose=require("mongoose")
+const cookieParser = require("cookie-parser");
 
 
 
 connection();
-
+app.use(cookieParser());
 app.use(express.json());
-app.use(cors());
+app.use(cors(
+    {
+        origin: "http://localhost:3000",
+        credentials: true,
+    }
+));
 
 
 
 const products = require('./Routes/ProductRoute');
-
-app.use("/check",router)
+const user = require('./Routes/user');
+app.use("/api",user)
 
 app.use('/api',products);
 
 
+const cartRoutes = require('./Routes/cardRoutes');
 
+
+app.use('/api', cartRoutes);
 
 
 

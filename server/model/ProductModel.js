@@ -16,34 +16,13 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: [true, "Please enter product description"]
     },
-    ratings: {
-        type: String,
-        default: 0
-    },
     images: {
         type: String,
         required: true
     },
     category: {
         type: String,
-        required: [true, "Please enter product category"],
-        enum: {
-            values: [
-                'Pizzas',
-                'Briyani',
-                'Burger',
-                'South Indian'
-            ],
-            message : "Please select correct category"
-        }
-    },
-    hotelname: {
-        type: String,
-        required: [true, "Please enter product seller"]
-    },
-    deliverytime: {
-        type: String,
-        required: [true, "Please enter product Delivery Time"]
+        required: [true, "Please enter product category"]
     },
     numOfReviews: {
         type: Number,
